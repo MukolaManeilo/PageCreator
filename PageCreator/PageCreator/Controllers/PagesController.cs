@@ -48,7 +48,7 @@ namespace PageCreator.Controllers
         // GET: Pages/Create
         public IActionResult Create()
         {
-            ViewData["CreatedBy"] = new SelectList(_context.Users, "Id", "Email");
+            ViewData["CreatedBy"] = new SelectList(_context.Users, "Id", "Id");
             return View();
         }
 
@@ -57,7 +57,7 @@ namespace PageCreator.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Access,CreatedBy,CreatedDate,Content")] Pages pages)
+        public async Task<IActionResult> Create([Bind("Id,Title,Access,CreatedBy,CreatedAt,Content")] Pages pages)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +65,7 @@ namespace PageCreator.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CreatedBy"] = new SelectList(_context.Users, "Id", "Email", pages.CreatedBy);
+            ViewData["CreatedBy"] = new SelectList(_context.Users, "Id", "Id", pages.CreatedBy);
             return View(pages);
         }
 
@@ -82,7 +82,7 @@ namespace PageCreator.Controllers
             {
                 return NotFound();
             }
-            ViewData["CreatedBy"] = new SelectList(_context.Users, "Id", "Email", pages.CreatedBy);
+            ViewData["CreatedBy"] = new SelectList(_context.Users, "Id", "Id", pages.CreatedBy);
             return View(pages);
         }
 
@@ -91,7 +91,7 @@ namespace PageCreator.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Access,CreatedBy,CreatedDate,Content")] Pages pages)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Access,CreatedBy,CreatedAt,Content")] Pages pages)
         {
             if (id != pages.Id)
             {
@@ -118,7 +118,7 @@ namespace PageCreator.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CreatedBy"] = new SelectList(_context.Users, "Id", "Email", pages.CreatedBy);
+            ViewData["CreatedBy"] = new SelectList(_context.Users, "Id", "Id", pages.CreatedBy);
             return View(pages);
         }
 

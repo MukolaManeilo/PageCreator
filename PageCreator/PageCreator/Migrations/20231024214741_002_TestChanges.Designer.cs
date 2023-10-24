@@ -12,8 +12,8 @@ using PageCreator.Data;
 namespace PageCreator.Migrations
 {
     [DbContext(typeof(PageCreatorContext))]
-    [Migration("20231014211937_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20231024214741_002_TestChanges")]
+    partial class _002_TestChanges
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,14 +43,13 @@ namespace PageCreator.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("content");
 
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("created_at");
+
                     b.Property<int>("CreatedBy")
                         .HasColumnType("int")
                         .HasColumnName("created_by");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("datetime2")
-                        .HasColumnName("created_at");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -72,8 +71,7 @@ namespace PageCreator.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("CreatedDate")
-                        .ValueGeneratedOnAddOrUpdate()
+                    b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2")
                         .HasColumnName("created_at");
 

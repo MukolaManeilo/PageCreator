@@ -22,7 +22,7 @@
                 @Html.DisplayNameFor(model => model.Users)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CreatedDate)
+                @Html.DisplayNameFor(model => model.CreatedAt)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Content)
@@ -40,10 +40,10 @@
                 @Html.DisplayFor(modelItem => item.Access)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Users.Email)
+                @Html.DisplayFor(modelItem => item.Users.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CreatedDate)
+                @Html.DisplayFor(modelItem => item.CreatedAt)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Content)
