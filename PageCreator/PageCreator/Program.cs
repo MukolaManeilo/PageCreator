@@ -9,6 +9,8 @@ builder.Services.AddDbContext<PageCreatorContext>(options =>
 
     options.UseSqlServer(builder.Configuration.GetConnectionString("PageCreatorContext") ?? throw new InvalidOperationException("Connection string 'PageCreatorContext' not found.")));
 builder.Services.AddControllersWithViews();
+
+
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())

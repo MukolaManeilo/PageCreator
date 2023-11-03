@@ -1,4 +1,38 @@
-﻿@{
+﻿@model IEnumerable<PageCreator.Models.Pages>
+@{
     ViewData["Title"] = "Home";
 }
-<h2>Home</h2>
+
+
+<div>
+    @foreach (var item in Model)
+    {
+        <div class="columns is-mobile">
+            <div class="column is-half is-offset-one-quarter">
+                <a>
+                    <div class="box">
+                        <div class="columns">
+                            <div class="column is-narrow">
+                                <h1 class="tile">
+                                    @item
+                                </h1>
+                            </div >
+                            <div class="column"></div>
+                            <div class="column is-narrow">
+                                <button class="button is-info is-outlined">Edit</button>
+                            </div>
+                            <div class="column is-narrow">
+                                <button class="button is-danger is-outlined">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    }
+    <div class="columns is-mobile">
+        <div class="column is-half is-offset-one-quarter">
+            <button class="button is-success is-outlined" style="margin: 0; width: 100%">Create</button>
+        </div>
+    </div>
+</div>
